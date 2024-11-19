@@ -21,7 +21,7 @@ stages:
         resourceGroupName: '$(RESOURCE_GROUP)'
         location: '$(LOCATION)'
         templatelocation: 'Linked artifact'
-        csmfile: '$(Build.SourceDirectory)'/environment_setup/cloud-environment.json'
+        #csmfile: '$(Build.SourceDirectory)'/environment_setup/cloud-environment.json'
         overrideParameters: '-baseName $(BASE_NAME) -location $(LOCATION) -workspace $(WORKSPACE_NAME)'
         deploymentMode: 'Incremental'
       displayName: 'Deploy resources to Azure'
