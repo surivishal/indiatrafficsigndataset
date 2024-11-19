@@ -2,7 +2,7 @@ pr: none
 trigger: none
 
 variables: 
-- group: mlops_rg_1
+- group: capstone_mlops_vg
 
 stages:
 - stage: 'Dev'
