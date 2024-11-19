@@ -2,25 +2,25 @@ pr: none
 trigger: none
 
 variables: 
-  - group: mlops_rg_1
+- group: mlops_rg_1
 
 stages:
-  - stage: 'Dev'
-  displayName: 'Dev'
-  jobs:
-  - job: 'Provision_Dev'
-  displayName: 'Provision Dev resources'
-  timeoutInMinutes: 0
-  steps:
-  - task: AzureResourceGroupDeployment
-    inputs:
-      azureSubscription: '$(AZURE_RM_SVC_CONNECTION)'
-      action: 'Create or update resource group'
-      resourceGroupName: '$(RESOURCE_GROUP)'
-      location: '$(LOCATION)'
-      templatelocation: 'Linked artifact'
-      csmfile: '$(Build.SourceDirectory)'/environment_setup/cloud-environment.json'
-      overrideParameters: '-baseName $(BASE_NAME) -location $(LOCATION) -workspace $(WORKSPACE_NAME)'
-      deploymentMode: 'Incremental'
-    displayName: 'Deploy resources to Azure'
+- stage: 'Dev'
+displayName: 'Dev'
+jobs:
+- job: 'Provision_Dev'
+displayName: 'Provision Dev resources'
+timeoutInMinutes: 0
+steps:
+- task: AzureResourceGroupDeployment
+  inputs:
+    azureSubscription: '$(AZURE_RM_SVC_CONNECTION)'
+    action: 'Create or update resource group'
+    resourceGroupName: '$(RESOURCE_GROUP)'
+    location: '$(LOCATION)'
+    templatelocation: 'Linked artifact'
+    csmfile: '$(Build.SourceDirectory)'/environment_setup/cloud-environment.json'
+    overrideParameters: '-baseName $(BASE_NAME) -location $(LOCATION) -workspace $(WORKSPACE_NAME)'
+    deploymentMode: 'Incremental'
+  displayName: 'Deploy resources to Azure'
 
